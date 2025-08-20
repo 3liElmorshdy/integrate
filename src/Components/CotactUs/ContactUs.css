@@ -1,0 +1,182 @@
+.contact-section {
+  padding: 2rem 0;
+}
+
+.contact-input, 
+.contact-textarea {
+  background-color: #D0D0D0 !important;
+  border: 1px solid #D0D0D0;
+  border-radius: 4px;
+  padding: 10px 15px;
+  width: 100%;
+}
+.contact-textarea {
+  height: 195px;
+  resize: none;
+}
+
+[dir='rtl'] .contact-input::placeholder,
+[dir='rtl'] .contact-textarea::placeholder {
+  padding-right: 5px;
+  transition: padding-right 0.3s ease;
+}
+
+
+[dir='ltr'] .wrapper__desc p {
+  text-align: left;
+}
+
+[dir='rtl'] .wrapper__desc p {
+  text-align: right;
+}
+
+.btn-handel {
+  background-color: #65471E;
+  color: white;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 25px;
+}
+@media (max-width: 768px) { 
+
+
+  .btn-contact{
+    padding: 10px 40px ;
+  }
+
+}
+
+
+
+
+
+
+
+.btn-contact {
+
+ padding: 20px 300px;
+  border-radius: 15px;
+  /* margin-top: 15px; */
+  /* margin-bottom: 111px; */
+
+}
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.wrapper__desc h2 {
+  font-size: 45px;
+  font-weight: 600;
+  color: #65471E;
+  padding-bottom: 5px;
+}
+
+.wrapper__desc p {
+  font-size: 20px;
+  color: #BC9B60;
+  font-weight: 300;
+}
+
+.contact-input, 
+.contact-textarea {
+  background-color: #D0D0D0 !important;
+  border: 1px solid #D0D0D0;
+  border-radius: 4px;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+[dir='rtl'] .contact-input {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir='rtl'] .contact-input::placeholder {
+  text-align: right;
+  padding-right: 15px; 
+}
+
+#phone {
+  text-align: left; 
+  direction: ltr; 
+}
+
+[dir='rtl'] #phone {
+  text-align: right;
+  direction: rtl;
+}
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  font-size: 18px; 
+  transition: all 0.3s ease;
+}
+
+
+[dir='rtl'] .contact-input::placeholder,
+[dir='rtl'] .contact-textarea::placeholder {
+  font-size: 18px; 
+  padding-right: 15px;
+  font-weight: 300;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: right;
+  
+
+
+}
+
+
+
+[dir='rtl'] #phone input {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+@media (max-width: 992px) {
+  .btn-contact {
+padding: 10px 20px;
+ 
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper__desc h2 {
+    font-size: 36px;
+  }
+  
+  .wrapper__desc p {
+    font-size: 18px;
+  }
+    .btn-contact {
+ 
+    padding: 10px 40px;
+  }
+  
+
+}
+
+@media (max-width: 576px) {
+  .wrapper__desc h2 {
+    font-size: 28px;
+  }
+  
+
+}
+
+/* ::placeholder {
+  color: #666; 
+  opacity: 1; 
+} */
+
+[dir='rtl'] ::placeholder {
+  font-size: 18px; 
+}
+
+@media (max-width: 768px) {
+  [dir='rtl'] ::placeholder {
+    font-size: 16px; 
+  }
+}

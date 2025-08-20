@@ -1,0 +1,264 @@
+.custom-navbar {
+  background-color: #BC9B60;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'alexandria', sans-serif;
+  position: relative;
+}
+
+.navbar-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.navbar-logo .logo-img {
+  height: 50px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 18px;
+  font-weight: 500;
+  color: #DDD0B1;
+  font-family: 'Alexandria', sans-serif;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #65471E;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #65471E;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+}
+
+
+.desktop-language-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.toggle-switch {
+  width: 50px;
+  height: 24px;
+  background-color: #e9ecef;
+  border-radius: 12px;
+  position: relative;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+}
+
+.toggle-circle {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #65471E;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-circle.rtl-active {
+  transform: translateX(26px);
+}
+
+.lang-text {
+  font-size: 0.9rem;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.lang-text.active {
+  color: #65471E;
+  font-weight: 600;
+}
+
+/* أنماط هامبرجر مينيو */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger-line {
+  width: 2rem;
+  height: 0.25rem;
+  background: #333;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  transform-origin: 1px;
+}
+
+/* أنماط RTL */
+[dir='rtl'] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir='rtl'] .navbar-container {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .nav-link::after {
+  left: auto;
+  right: 0;
+}
+
+[dir='rtl'] .toggle-circle {
+  left: auto;
+  right: 2px;
+}
+
+[dir='rtl'] .toggle-circle.rtl-active {
+  transform: translateX(-26px);
+}
+
+[dir='rtl'] .navbar-links {
+  font-family: 'alexandria', sans-serif;
+}
+
+[dir='rtl'] .lang-text {
+  font-family: 'alexandria', sans-serif;
+}
+
+[dir='rtl'] .hamburger-menu {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* أنماط للجوال */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0 2rem;
+    gap: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 5;
+  }
+
+  .navbar-links.active {
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0 !important;
+    color: white !important;
+    font-size: 1.1rem !important;
+  }
+
+  .nav-link:hover {
+    color: #BC9B60 !important;
+  }
+
+  .nav-link::after {
+    background-color: #BC9B60 !important;
+  }
+
+  .desktop-language-toggle {
+    display: none;
+  }
+  
+  .mobile-language-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+  }
+  
+  .mobile-language-toggle .lang-text {
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .mobile-language-toggle .lang-text.active {
+    color: #BC9B60;
+    font-weight: bold;
+  }
+  
+  .mobile-language-toggle .toggle-switch {
+    background-color: #333;
+    border: 1px solid #555;
+  }
+  
+  .mobile-language-toggle .toggle-circle {
+    background-color: #BC9B60;
+    color: white;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-language-toggle {
+    display: none;
+  }
+  
+  .desktop-language-toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar-container {
+    width: 100% !important;
+  }
+
+  .navbar-links a {
+    font-size: 14px;
+  }
+}

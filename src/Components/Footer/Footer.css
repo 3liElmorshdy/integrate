@@ -1,0 +1,135 @@
+.footer-container {
+  background-color: #65471E;
+  color: white;
+  font-family: 'Alexandria', sans-serif;
+  width: 90%;
+  margin: auto auto;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.footer-content {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+}
+
+.footer-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.footer-description-section {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative; /* Needed for the pseudo-element */
+}
+
+/* LTR (English) styles */
+[dir='ltr'] .footer-description-section {
+  padding-left: 156px;
+}
+
+[dir='ltr'] .footer-description-section::before {
+  content: "";
+  position: absolute;
+  left: 100px; 
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: #fff;
+}
+
+/* RTL (Arabic) styles */
+[dir='rtl'] .footer-description-section {
+  padding-right: 156px;
+  padding-left: 0;
+}
+
+[dir='rtl'] .footer-description-section::before {
+  content: "";
+  position: absolute;
+  right: 100px; /* Mirror the LTR position */
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: #fff;
+}
+
+/* Common styles */
+.first-section {
+  padding-bottom: 25px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+  padding-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 8px 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+[dir='ltr'] .footer-description-section::before {
+         left: 0px;
+
+  }
+ [dir='ltr'] .footer-description-section {
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-description-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  [dir='ltr'] .footer-description-section::before,
+  [dir='rtl'] .footer-description-section::before {
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  
+  [dir='rtl'] .footer-description-section::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 0%;
+    width: 0;
+    background: #fff;
+  }
+  [dir='ltr'] .footer-description-section::before {
+    content: "";
+    position: absolute;
+    left: 100px;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: #fff;
+  }
+
+  
+}

@@ -1,0 +1,140 @@
+.mission-container {
+  margin: 0 auto;
+}
+
+.mission-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.mission-wrapper__description {
+  flex: 1;
+}
+
+.mission-wrapper__img {
+  width: 40%;
+}
+
+/* Default LTR styles */
+[dir='ltr'] .mission-wrapper__img img {
+  margin-left: 15px;
+  margin-right: 0;
+  width: 100%;
+}
+
+[dir='rtl'] .mission-wrapper__img img {
+  margin-left: 0;
+  padding-right: 80px;  
+  width: 100%;
+}
+
+.mission-wrapper__description h2 {
+  font-size: 45px;
+  font-weight: 600;
+  color: #65471E;
+  padding-bottom: 5px;
+}
+
+.mission-wrapper__description p {
+  font-size: 18px;
+  font-weight: 300;
+  color: #282828;
+  line-height: 35px;
+}
+
+[dir='rtl'] .mission-wrapper__description h2,
+[dir='rtl'] .mission-wrapper__description p {
+  text-align: right;
+}
+
+/* Mission Stats Grid */
+.mission-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.mission-stat {
+  text-align: center;
+  padding: 1.5rem;
+  background: #65471E;
+  border-radius: 8px;
+  min-width: 0; /* Fixes flexbox overflow issues */
+}
+
+.mission-stat__content i {
+  font-size: 2rem;
+  color: #DDD0B1;
+  margin-bottom: 0.5rem;
+}
+
+.mission-stat__content h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  display: inline-block;
+}
+
+.mission-stat__content p {
+  color: #fff;
+}
+
+/* Tablet View (2 columns) */
+@media (max-width: 1024px) {
+  .mission-stats {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+}
+
+/* Mobile View (1 column) */
+@media (max-width: 768px) {
+  .mission-wrapper {
+    flex-direction: column;
+  }
+  
+  .mission-wrapper__img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto !important;
+  }
+  
+  [dir='rtl'] .mission-wrapper__img img,
+  [dir='ltr'] .mission-wrapper__img img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .mission-stats {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
+
+/* Small Mobile View Adjustments */
+@media (max-width: 480px) {
+  .mission-wrapper__description h2 {
+    font-size: 36px;
+  }
+  
+  .mission-wrapper__description p {
+    font-size: 16px;
+    line-height: 30px;
+  }
+  
+  .mission-stat {
+    padding: 1rem;
+  }
+  
+  .mission-stat__content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+
+@media (max-width: 768px) { 
+
+  .mission-wrapper__img{
+    display: none;
+  }
+}

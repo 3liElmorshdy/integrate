@@ -1,0 +1,21 @@
+.custom-text{
+  font-size: 35px;
+  font-weight: 600 ;
+  font-family: 'alexandria';
+  color: #65471E;
+  padding-top: 12px;
+
+}
+.item .test {
+  font-size: 20px;
+  color: #BC9B60;
+  font-weight: 300;
+  font-family: 'alexandria';
+}
+.item p{
+  font-size: 20px;
+  font-family: 'alexandria';
+  font-weight: 300;
+  color: #282828;
+  line-height: 40px;
+}

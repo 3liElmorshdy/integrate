@@ -1,0 +1,345 @@
+.containerHero {
+  width: 90%;
+ 
+  margin: auto;
+  position: relative;
+}
+
+#hero-section {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+    url('../../assets/images/2-header/af9f352c94a044232f1ee8fbc29dbd6ada2d9ab2.jpg') left/cover no-repeat;
+  /* min-height: 100vh; */
+}
+
+.wrapper__intro {
+  color: white; 
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 60px;
+ padding-top: 45px;
+
+}
+
+/* @media (min-width: 992px) {
+  .container {
+        max-width: 1063px !important;
+    }
+} */
+/* @media (max-width :1027px) {
+  .legal-slogan{
+    font-size: 24px;
+  }
+  
+} */
+.container__wrapper{
+  position: relative;
+   height: 100vh;
+}
+
+.legal-slogan {
+  font-family: 'Alexandria', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+  /* margin-bottom: 16px; */
+}
+
+.wrapper__intro p {
+  font-family: 'Alexandria', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #DDD0B1;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  width: 90%;
+  margin: auto;
+  min-height: 100vh;
+}
+
+.hero-left {
+  flex: 1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.legal-subtext {
+  font-family: 'Alexandria', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 32px;
+}
+
+.download-app {
+  margin-top: 32px;
+}
+
+.download-title {
+  font-family: 'Alexandria', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.store-buttons img {
+  height: 48px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero-section{
+  position: relative;
+  /* background-color: red; */
+}
+
+.mask-group img{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 500px;
+  transition: all 0.3s ease;
+}
+
+[dir='rtl'] .mask-group img {
+  right: auto;
+  left: 0;
+}
+
+.download-store h3{
+  font-family: 'Alexandria', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+  margin-bottom: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+.download-store{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding-bottom: 108px;
+  transition: all 0.3s ease;
+}
+
+[dir='rtl'] .download-store {
+  left: auto;
+  right: 0;
+}
+
+.download-store__wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+[dir='rtl'] .download-store__wrapper {
+  flex-direction: row-reverse;
+
+}
+
+[dir='rtl'] .download-store__wrapper a {
+  flex-direction: row-reverse;
+  margin-left: 10px;
+}
+.Handel-Text{
+  margin-left: 0px !important;
+}
+
+.iphoneStore{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 5px 21px;
+  border: 2px;
+  border-radius: 10px;
+}
+
+.iphoneStore p {
+  margin-left: 10px;
+  color: #65471E;
+  font-size: 20px;
+}
+
+[dir='rtl'] .iphoneStore p {
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.googleStore p {
+  margin-left: 10px;
+  color: #65471E;
+  font-size: 20px;
+}
+
+[dir='rtl'] .googleStore p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.googleStore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 5px 21px;
+  border: 2px;
+  border-radius: 10px;
+  margin-right: 25px;
+}
+
+[dir='rtl'] .googleStore {
+  margin-right: 0;
+  margin-left: 25px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0rem !important;
+
+}
+
+/* @media (min-width: 768px) {
+    .container, .container-md, .container-sm {
+        max-width: 90%;
+      margin: auto;}
+    } */
+
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+    .iphoneStore  {
+        padding: 2px 9px;
+    }
+  .container__wrapper .wrapper__intro{
+
+   
+        color: white;
+    font-weight: 600;
+    /* font-size: 30px; */
+    line-height: 60px;
+   
+    padding-top: 20px;
+  }
+.wrapper__intro h3{
+  font-size: 30px;
+}
+.wrapper__intro p{
+  font-size: 20px;
+}
+.containerHero{
+  width: 94% !important;
+  margin: auto;
+}
+
+.mask-group img{
+  width: 50%;
+}
+
+.download-store h3{
+      font-size: 20px;
+
+}
+.googleStore {
+      padding: 2px 9px;
+          margin-right: 15px
+}
+.iphoneStore{
+    padding: 2px 9px;
+}
+.iphoneStore p{
+  font-size: 15px;
+}
+.googleStore p{
+  font-size: 15px;
+}
+}
+
+
+
+
+
+@media (max-width: 768px) { 
+  .iphoneStore p {
+    margin-left: 10px;
+    color: #65471E;
+    /* font-size: 10px !; */
+  }
+  .iphoneStore img{
+    margin-right: 20px;
+  }
+  .googleStore img {
+    margin-right: 20px;
+  }
+.wrapper__intro {
+  padding-top: 30px;
+  line-height: 35px;
+}
+
+.wrapper__intro p {
+      font-size: 20px;
+}
+.wrapper__intro h3 {
+
+  /* line-height: 40px; */
+}
+  .legal-slogan{
+    font-size: 25px;
+    line-height: 50px
+
+  }
+  /* .wrapper__intro p{
+    font-size: 20px;
+  } */
+  .mask-group{
+    display: none;
+  }
+  .container__wrapper{
+  height: 65vh ;
+  }
+.download-store {
+position: static;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+}
+.iphoneStore p {
+    margin-left: 10px;
+    color: #65471E;
+    font-size: 13px;
+
+ }
+
+ .googleStore {
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 5px 15px;
+}
+ .googleStore p
+  {
+        margin-left: 10px;
+    color: #65471E;
+    font-size: 13px;
+
+}
+}
+
+

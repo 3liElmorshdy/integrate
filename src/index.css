@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Alexandria';
+  src: url('./assets/Fonts/static/Alexandria-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Alexandria';
+  src: url('./assets/Fonts/static/Alexandria-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
