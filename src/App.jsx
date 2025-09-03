@@ -10,6 +10,8 @@ import OurMission from './Components/Mission/OurMission';
 import ContactUS from './Components/CotactUs/ContactUS';
 import Footer from './Components/Footer/Footer';
 import { useTranslation } from 'react-i18next';
+import { GlobalLoaderProvider } from './context/GlobalLoaderContext';
+import GlobalLoader from './Components/GlobalLoader/GlobalLoader';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -24,6 +26,7 @@ import StateFinance from './Components/Pages/StateFinance';
 import OrderCreate from './Components/Pages/OrderCreate';
 import RealStateCreate from './Components/Pages/RealStateCreate';
 import ContractCreate from './Components/Pages/ContractCreate';
+
 
 // Layout component that includes NavBar and handles language context
 const Layout = ({ onLanguageChange, currentLanguage }) => (
@@ -107,9 +110,12 @@ function App() {
   ]);
 
   return (
-    <div className={`app ${currentLanguage === 'ar' ? 'rtl' : 'ltr'}`}>
-      <RouterProvider router={router} />
-    </div>
+    <GlobalLoaderProvider>
+      <div className={`app ${currentLanguage === 'ar' ? 'r' : 'ltr'}`}>
+        <GlobalLoader />
+        <RouterProvider router={router} />
+      </div>
+    </GlobalLoaderProvider>
   )
 }
 

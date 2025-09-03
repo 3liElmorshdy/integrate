@@ -89,6 +89,35 @@
   margin: 0 !important;
 }
 
+/* Service Price Styling */
+.service-price {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(101, 71, 30, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.price-label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.price-amount {
+  display: block;
+  font-size: 16px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+[dir='rtl'] .service-price {
+  border-left: none;
+  border-right: 3px solid var(--primary-color);
+}
+
 /* Tablet view (2 columns) */
 @media (max-width: 1024px) {
   .services-row {
