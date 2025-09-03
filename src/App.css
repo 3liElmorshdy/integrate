@@ -74,3 +74,59 @@
 a{
   text-decoration: none !important;
 }
+
+/* Lazy Loading Fallback Styles */
+.loading-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #654716;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.loading-fallback p {
+  color: #654716;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* RTL Support for Loading */
+[dir='rtl'] .loading-fallback {
+  text-align: center;
+}
+
+/* Responsive Loading */
+@media (max-width: 768px) {
+  .loading-fallback {
+    min-height: 150px;
+    padding: 1rem;
+  }
+  
+  .loading-spinner {
+    width: 32px;
+    height: 32px;
+    border-width: 3px;
+  }
+  
+  .loading-fallback p {
+    font-size: 1rem;
+  }
+}

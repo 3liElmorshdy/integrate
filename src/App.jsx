@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
 import './App.css'
-import HearoSection from './Components/HeroSection/HearoSection'
-import NavBar from './Components/NavBar/NavBar'
-import WhoWeAre from './Components/WhoWeAre/WhoWeAre'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css"
-import Services from './Components/Services/Services';
-import OurMission from './Components/Mission/OurMission';
-import ContactUS from './Components/CotactUs/ContactUS';
-import Footer from './Components/Footer/Footer';
 import { useTranslation } from 'react-i18next';
 import { GlobalLoaderProvider } from './context/GlobalLoaderContext';
 import GlobalLoader from './Components/GlobalLoader/GlobalLoader';
@@ -19,33 +12,48 @@ import {
   Outlet,
 } from 'react-router-dom';
 
-import Blog from './Components/Blog/Blog';
-import RealState from './Components/Pages/RealState';
-import Contract from './Components/Pages/Contract';
-import StateFinance from './Components/Pages/StateFinance';
-import OrderCreate from './Components/Pages/OrderCreate';
-import RealStateCreate from './Components/Pages/RealStateCreate';
-import ContractCreate from './Components/Pages/ContractCreate';
+// Lazy load all components
+const HearoSection = lazy(() => import('./Components/HeroSection/HearoSection'));
+const NavBar = lazy(() => import('./Components/NavBar/NavBar'));
+const WhoWeAre = lazy(() => import('./Components/WhoWeAre/WhoWeAre'));
+const Services = lazy(() => import('./Components/Services/Services'));
+const OurMission = lazy(() => import('./Components/Mission/OurMission'));
+const ContactUS = lazy(() => import('./Components/CotactUs/ContactUS'));
+const Footer = lazy(() => import('./Components/Footer/Footer'));
+const Blog = lazy(() => import('./Components/Blog/Blog'));
+const RealState = lazy(() => import('./Components/Pages/RealState'));
+const Contract = lazy(() => import('./Components/Pages/Contract'));
+const StateFinance = lazy(() => import('./Components/Pages/StateFinance'));
+const OrderCreate = lazy(() => import('./Components/Pages/OrderCreate'));
+const RealStateCreate = lazy(() => import('./Components/Pages/RealStateCreate'));
+const ContractCreate = lazy(() => import('./Components/Pages/ContractCreate'));
 
+// Loading component for Suspense fallback
+const LoadingFallback = () => (
+  <div className="loading-fallback">
+    <div className="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+);
 
 // Layout component that includes NavBar and handles language context
 const Layout = ({ onLanguageChange, currentLanguage }) => (
-  <>
+  <Suspense fallback={<LoadingFallback />}>
     <NavBar onLanguageChange={onLanguageChange} currentLanguage={currentLanguage} />
     <Outlet />
-  </>
+  </Suspense>
 );
 
 // Home page component
 const HomePage = () => (
-  <>
+  <Suspense fallback={<LoadingFallback />}>
     <HearoSection />
     <WhoWeAre />
     <Services />
     <OurMission />
     <ContactUS />
     <Footer />
-  </>
+  </Suspense>
 );
 
 function App() {
@@ -79,31 +87,59 @@ function App() {
         },
         {
           path: "blog",
-          element: <Blog />,
+          element: (
+            <Suspense fallback={<LoadingFallback />}>
+              <Blog />
+            </Suspense>
+          ),
         },
         {
           path: "real-state",
-          element: <RealState />,
+          element: (
+            <Suspense fallback={<LoadingFallback />}>
+              <RealState />
+            </Suspense>
+          ),
         },
         {
           path: "contract",
-          element: <Contract />,
+          element: (
+            <Suspense fallback={<LoadingFallback />}>
+              <Contract />
+            </Suspense>
+          ),
         },
         {
           path: "state-finance",
-          element: <StateFinance />,
+          element: (
+            <Suspense fallback={<LoadingFallback />}>
+              <StateFinance />
+            </Suspense>
+          ),
         },
         {
           path: "order/create",
-          element: <OrderCreate />,
+          element: (
+            <Suspense fallback={<LoadingFallback />}>
+              <OrderCreate />
+            </Suspense>
+          ),
         },
         {
           path: "real-state/create",
-          element: <RealStateCreate />,
+          element: (
+            <Suspense fallback={<LoadingFallback />}>
+              <RealStateCreate />
+            </Suspense>
+          ),
         },
         {
           path: "contract/create",
-          element: <ContractCreate />,
+          element: (
+            <Suspense fallback={<LoadingFallback />}>
+              <ContractCreate />
+            </Suspense>
+          ),
         },
       ],
     },
