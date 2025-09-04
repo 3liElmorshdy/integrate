@@ -1,0 +1,100 @@
+/* CustomLoader Component Styles */
+
+/* Ensure the loader covers the entire viewport */
+.custom-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth transitions for all elements */
+.custom-loader-overlay * {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Debug panel styling */
+.debug-panel {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-family: monospace;
+  z-index: 10000;
+}
+
+/* Logo placeholder styling */
+.logo-placeholder {
+  width: 5rem;
+  height: 5rem;
+  background: white;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #374151;
+}
+
+/* Circle styling */
+.loader-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #65471E;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-placeholder {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.25rem;
+  }
+  
+  .loader-circle {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .debug-panel {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+}
+
+/* RTL Support */
+[dir='rtl'] .debug-panel {
+  left: auto;
+  right: 1rem;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .logo-placeholder {
+    border: 2px solid #000;
+  }
+  
+  .loader-circle {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .custom-loader-overlay * {
+    transition: none;
+    animation: none;
+  }
+}
