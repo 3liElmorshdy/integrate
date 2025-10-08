@@ -86,14 +86,24 @@ a {
 }
 
   @media (min-width: 768px) and (max-width: 1200px) {
-[dir='ltr'] .footer-description-section::before {
-         left: 0px;
-
+  [dir='ltr'] .footer-description-section::before {
+    left: 0px;
+    width: 3px; 
+    top: 15%;
+    height: 80%;
   }
- [dir='ltr'] .footer-description-section {
+  [dir='ltr'] .footer-description-section {
+    padding: 20px; 
+  }
+
+  [dir='rtl'] .footer-description-section::before {
+    right: 0px;
+    width: 3px;
+ 
+  }
+  [dir='rtl'] .footer-description-section {
     padding: 20px;
   }
-
 }
 
 @media (max-width: 768px) {

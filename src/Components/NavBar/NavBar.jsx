@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css";
-import Logo from "../../assets/images/1-nav/Logo.png";
+import Logo from "../../assets/images/LOgo/test.png"
 
 function NavBar({ onLanguageChange, currentLanguage }) {
   const { t, i18n } = useTranslation();
@@ -31,14 +31,14 @@ function NavBar({ onLanguageChange, currentLanguage }) {
   };
 
   const handleSectionClick = (sectionId) => {
-    // إذا كنا بالفعل في الصفحة الرئيسية، انتقل إلى القسم
+
     if (location.pathname === "/home") {
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // إذا كنا في صفحة أخرى، انتقل إلى الصفحة الرئيسية ثم إلى القسم
+   
       navigate(`/home#${sectionId}`);
     }
     setIsMenuOpen(false);
@@ -58,10 +58,14 @@ function NavBar({ onLanguageChange, currentLanguage }) {
           <span className="hamburger-line"></span>
         </button>
         <div className="navbar-logo">
-          <Link to="/home">
-            <img src={Logo} alt="Logo" className="logo-img" />
-          </Link>
-        </div>
+  <Link to="/home">
+    <img
+      src={Logo}
+      alt="Elite Fair Law Firm"
+      style={{ height: '40px', width: 'auto', display: 'block' }}
+    />
+  </Link>
+</div>
 
         <div className={`navbar-links ${isMenuOpen ? "active" : ""}`}>
           <Link
