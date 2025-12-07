@@ -1,10 +1,11 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react'
+import React, { useState, useEffect, lazy } from 'react'
 import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import { useTranslation } from 'react-i18next';
 import { GlobalLoaderProvider } from './context/GlobalLoaderContext';
 import GlobalLoader from './Components/GlobalLoader/GlobalLoader';
+import CustomLoader from './Components/CustomLoader/CustomLoader';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -28,38 +29,34 @@ const OrderCreate = lazy(() => import('./Components/Pages/OrderCreate'));
 const RealStateCreate = lazy(() => import('./Components/Pages/RealStateCreate'));
 const ContractCreate = lazy(() => import('./Components/Pages/ContractCreate'));
 
-// Loading component for Suspense fallback
-const LoadingFallback = () => (
-  <div className="loading-fallback">
-    <div className="loading-spinner"></div>
-    <p>Loading...</p>
-  </div>
-);
 
-// Layout component that includes NavBar and handles language context
 const Layout = ({ onLanguageChange, currentLanguage }) => (
-  <Suspense fallback={<LoadingFallback />}>
+  <>
     <NavBar onLanguageChange={onLanguageChange} currentLanguage={currentLanguage} />
     <Outlet />
-  </Suspense>
+  </>
 );
 
-// Home page component
 const HomePage = () => (
-  <Suspense fallback={<LoadingFallback />}>
+  <>
     <HearoSection />
     <WhoWeAre />
     <Services />
     <OurMission />
     <ContactUS />
     <Footer />
-  </Suspense>
+  </>
 );
 
 function App() {
   const { i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const [language, setLanguage] = useState("en"); 
+  const [language, setLanguage] = useState("en");
+  
+  // Check if CustomLoader has been shown before in this session
+  const [showCustomLoader, setShowCustomLoader] = useState(() => {
+    return !sessionStorage.getItem('customLoaderShown');
+  }); 
 
   useEffect(() => {
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
@@ -71,7 +68,7 @@ function App() {
     setLanguage(language);
   };
 
-  // Define routes
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -87,69 +84,48 @@ function App() {
         },
         {
           path: "blog",
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <Blog />
-            </Suspense>
-          ),
+          element: <Blog />,
         },
         {
           path: "real-state",
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <RealState />
-            </Suspense>
-          ),
+          element: <RealState />,
         },
         {
           path: "contract",
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <Contract />
-            </Suspense>
-          ),
+          element: <Contract />,
         },
         {
           path: "state-finance",
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <StateFinance />
-            </Suspense>
-          ),
+          element: <StateFinance />,
         },
         {
           path: "order/create",
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <OrderCreate />
-            </Suspense>
-          ),
+          element: <OrderCreate />,
         },
         {
           path: "real-state/create",
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <RealStateCreate />
-            </Suspense>
-          ),
+          element: <RealStateCreate />,
         },
         {
           path: "contract/create",
-          element: (
-            <Suspense fallback={<LoadingFallback />}>
-              <ContractCreate />
-            </Suspense>
-          ),
+          element: <ContractCreate />,
         },
       ],
     },
   ]);
 
+  const handleCustomLoaderComplete = () => {
+    setShowCustomLoader(false);
+    // Mark that CustomLoader has been shown in this session
+    sessionStorage.setItem('customLoaderShown', 'true');
+  };
+
   return (
     <GlobalLoaderProvider>
       <div className={`app ${currentLanguage === 'ar' ? 'r' : 'ltr'}`}>
         <GlobalLoader />
-        <RouterProvider router={router} />
+        {showCustomLoader && <CustomLoader onComplete={handleCustomLoaderComplete} />}
+        {!showCustomLoader && <RouterProvider router={router} />}
       </div>
     </GlobalLoaderProvider>
   )

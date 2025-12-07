@@ -1,82 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from '../../assets/images/LOgo/LOgo.png';
 
 const CustomLoader = ({ onComplete }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
-  // Animation steps configuration
-  const steps = [
-    {
-      id: 0,
-      name: "Initial Circle",
-      duration: 1000, // 1 second
-      description: "Full white background with small circle in center"
-    },
-    {
-      id: 1,
-      name: "Background Transition",
-      duration: 800, // 0.8 seconds
-      description: "Background changes to #65471E, circle disappears"
-    },
-    {
-      id: 2,
-      name: "Logo Appearance",
-      duration: 600, // 0.6 seconds
-      description: "Logo appears in center on #65471E background"
-    },
-    {
-      id: 3,
-      name: "Logo Scale Up",
-      duration: 800, // 0.8 seconds
-      description: "Logo scales up with zoom effect"
-    },
-    {
-      id: 4,
-      name: "Logo Scale Down",
-      duration: 600, // 0.6 seconds
-      description: "Logo scales back to normal size"
-    },
-    {
-      id: 5,
-      name: "Background to White",
-      duration: 800, // 0.8 seconds
-      description: "Background transitions back to white"
-    },
-    {
-      id: 6,
-      name: "Final Circle",
-      duration: 1000, // 1 second
-      description: "Show small circle again, then hide loader"
-    }
-  ];
+
+  const animationDurations = [200, 200, 800, 1000, 600, 200, 200];
 
   // Animation sequence controller
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (currentStep < steps.length - 1) {
+      if (currentStep < animationDurations.length - 1) {
         setCurrentStep(currentStep + 1);
       } else {
-        // Animation complete - hide loader and show main content
         setIsVisible(false);
         setTimeout(() => {
           onComplete && onComplete();
-        }, 500); // Small delay before calling onComplete
+        }, 200); // Small delay before calling onComplete
       }
-    }, steps[currentStep].duration);
+    }, animationDurations[currentStep]);
 
     return () => clearTimeout(timer);
-  }, [currentStep, steps, onComplete]);
+  }, [currentStep, animationDurations, onComplete]);
 
   // Animation variants for different elements
-  const backgroundVariants = {
-    white: {
-      backgroundColor: "#FFFFFF",
-      transition: { duration: 0.8, ease: "easeInOut" }
+  // Base background stays white; a circular overlay handles the brown reveal/fade
+  const backgroundCircleVariants = {
+    hidden: {
+      scale: 0,
+      opacity: 0
     },
-    brown: {
-      backgroundColor: "#65471E",
-      transition: { duration: 0.8, ease: "easeInOut" }
+    expanding: {
+      scale: 20,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeInOut" }
+    },
+    expanded: {
+      scale: 20,
+      opacity: 1
+    },
+    fading: {
+      scale: 20,
+      opacity: 0,
+      transition: { duration: 0.4, ease: "easeInOut" }
     }
   };
 
@@ -97,20 +65,20 @@ const CustomLoader = ({ onComplete }) => {
     hidden: {
       scale: 0,
       opacity: 0,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.2 }
     },
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.8, ease: "easeOut" }
     },
     scaleUp: {
-      scale: 1.3,
+      scale: 1.5,
       transition: { duration: 0.8, ease: "easeInOut" }
     },
     scaleDown: {
       scale: 1,
-      transition: { duration: 0.6, ease: "easeInOut" }
+      transition: { duration: 0.8, ease: "easeInOut" }
     }
   };
 
@@ -119,16 +87,47 @@ const CustomLoader = ({ onComplete }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center"
-        variants={backgroundVariants}
-        animate={currentStep === 0 || currentStep === 5 || currentStep === 6 ? "white" : "brown"}
-        initial="white"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#FFFFFF'
+        }}
       >
+        {/* Expanding/Fading background circle overlay */}
+        {(currentStep >= 1 && currentStep <= 5) && (
+          <motion.div
+            style={{
+              position: 'absolute',
+              width: '25vmax',
+              height: '25vmax',
+              borderRadius: '50%',
+              backgroundColor: '#65471E'
+            }}
+            variants={backgroundCircleVariants}
+            initial="hidden"
+            animate={
+              currentStep === 1 ? 'expanding' :
+              currentStep >= 2 && currentStep <= 4 ? 'expanded' :
+              currentStep === 5 ? 'fading' : 'hidden'
+            }
+          />
+        )}
         {/* Step 0 & 6: Small Circle */}
         {(currentStep === 0 || currentStep === 6) && (
           <motion.div
-            className="w-6 h-6 rounded-full"
-            style={{ backgroundColor: "#65471E" }}
+            style={{
+              width: '25px',
+              height: '25px',
+              borderRadius: '50%',
+              backgroundColor: '#65471E'
+            }}
             variants={circleVariants}
             initial="hidden"
             animate="visible"
@@ -139,7 +138,11 @@ const CustomLoader = ({ onComplete }) => {
         {/* Step 2, 3, 4: Logo */}
         {(currentStep === 2 || currentStep === 3 || currentStep === 4) && (
           <motion.div
-            className="flex items-center justify-center"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
             variants={logoVariants}
             initial="hidden"
             animate={
@@ -148,29 +151,20 @@ const CustomLoader = ({ onComplete }) => {
               currentStep === 4 ? "scaleDown" : "visible"
             }
           >
-            {/* Replace with real asset - Logo placeholder */}
-            <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-2xl font-bold text-gray-800">LOGO</span>
-            </div>
-            {/* 
-              TODO: Replace with real logo image
-              <img 
-                src="/path/to/logo.png" 
-                alt="Company Logo" 
-                className="w-20 h-20 object-contain"
-              />
-            */}
+            {/* Company Logo */}
+            <img 
+              src={Logo} 
+              alt="Elite Fair Law Firm Logo" 
+              style={{
+                width: '150px',
+                height: '150px',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3))'
+              }}
+            />
           </motion.div>
         )}
 
-        {/* Debug Info - Remove in production */}
-        {process.env.NODE_ENV === 'development' && (
-          <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded text-sm">
-            <div>Step: {currentStep + 1}/7</div>
-            <div>Phase: {steps[currentStep].name}</div>
-            <div>Duration: {steps[currentStep].duration}ms</div>
-          </div>
-        )}
       </motion.div>
     </AnimatePresence>
   );

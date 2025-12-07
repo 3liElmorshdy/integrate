@@ -35,28 +35,72 @@ const AppIntegrationExample = () => {
 
   // Your main app content
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
+    <div style={{
+      minHeight: '100vh',
+      backgroundColor: '#f9fafb',
+      padding: '32px 0'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 16px'
+      }}>
+        <h1 style={{
+          fontSize: '36px',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          color: '#1f2937',
+          marginBottom: '32px'
+        }}>
           Welcome to Your App!
         </h1>
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '8px',
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+          padding: '32px'
+        }}>
+          <h2 style={{
+            fontSize: '24px',
+            fontWeight: '600',
+            color: '#374151',
+            marginBottom: '16px'
+          }}>
             App Successfully Loaded
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p style={{
+            color: '#6b7280',
+            marginBottom: '24px',
+            lineHeight: '1.6'
+          }}>
             The custom loader has completed its animation sequence and your app is now ready to use.
           </p>
           
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-blue-800 mb-2">
+          <div style={{
+            backgroundColor: '#eff6ff',
+            border: '1px solid #93c5fd',
+            borderRadius: '8px',
+            padding: '16px',
+            marginBottom: '24px'
+          }}>
+            <h3 style={{
+              fontSize: '18px',
+              fontWeight: '600',
+              color: '#1e40af',
+              marginBottom: '8px'
+            }}>
               Integration Notes:
             </h3>
-            <ul className="text-blue-700 space-y-1 text-sm">
-              <li>• CustomLoader runs once on app initialization</li>
-              <li>• Replace logo placeholder with your actual logo</li>
-              <li>• Adjust animation timing in the steps array</li>
-              <li>• Customize colors to match your brand</li>
+            <ul style={{
+              color: '#1e40af',
+              fontSize: '14px',
+              lineHeight: '1.6',
+              paddingLeft: '20px'
+            }}>
+              <li style={{ marginBottom: '4px' }}>• CustomLoader runs once on app initialization</li>
+              <li style={{ marginBottom: '4px' }}>• Replace logo placeholder with your actual logo</li>
+              <li style={{ marginBottom: '4px' }}>• Adjust animation timing in the steps array</li>
+              <li style={{ marginBottom: '4px' }}>• Customize colors to match your brand</li>
             </ul>
           </div>
           
@@ -65,7 +109,18 @@ const AppIntegrationExample = () => {
               setShowCustomLoader(true);
               setIsAppReady(false);
             }}
-            className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+            style={{
+              backgroundColor: '#2563eb',
+              color: 'white',
+              fontWeight: '600',
+              padding: '8px 16px',
+              borderRadius: '8px',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#1d4ed8'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#2563eb'}
           >
             Restart Custom Loader
           </button>
